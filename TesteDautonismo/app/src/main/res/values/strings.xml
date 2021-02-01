@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">TesteDautonismo</string>
+
+    <string name="dautonismo">
+        Daltonismo, também conhecido como discromatopsia ou discromopsia, é uma perturbação da percepção visual caracterizada pela incapacidade de diferenciar todas ou algumas cores, manifestando-se muitas vezes pela dificuldade em distinguir o verde do vermelho.
+    </string>
+</resources>
