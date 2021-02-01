@@ -84,13 +84,11 @@ class Tela2 : AppCompatActivity() {
 
         }
         binding.buttonCancelar.setOnClickListener {
-            intent = Intent(this,MainActivity::class.java)
+            intent = Intent()
+            intent.putExtra("btnCancelar", "Cancelado")
             setResult(Activity.RESULT_CANCELED,intent)
+            //startActivity(intent);
             finish()
-            startActivity(intent);
-
-
-
         }
 
     }

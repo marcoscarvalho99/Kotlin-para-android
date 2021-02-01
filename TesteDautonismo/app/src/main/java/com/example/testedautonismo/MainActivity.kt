@@ -1,5 +1,6 @@
 package com.example.testedautonismo
 
+import android.app.Activity
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -24,7 +25,7 @@ class MainActivity : AppCompatActivity() {
 
         binding.buttonTest1.setOnClickListener {
 
-            Toast.makeText(this,"botao1", Toast.LENGTH_SHORT).show()
+          //  Toast.makeText(this,"botao1", Toast.LENGTH_SHORT).show()
             intent = Intent(this,Tela2::class.java)
             val bundle=Bundle()
             bundle.putInt("botao",1)
@@ -33,7 +34,7 @@ class MainActivity : AppCompatActivity() {
         }
         binding.buttonTest2.setOnClickListener {
 
-            Toast.makeText(this,"clicou botao2",Toast.LENGTH_SHORT).show()
+            //Toast.makeText(this,"clicou botao2",Toast.LENGTH_SHORT).show()
 
             intent = Intent(this,Tela2::class.java)
             val bundle=Bundle()
@@ -43,7 +44,7 @@ class MainActivity : AppCompatActivity() {
         }
         binding.buttonTest3.setOnClickListener {
 
-            Toast.makeText(this,"clicou botao 3",Toast.LENGTH_SHORT).show()
+            //Toast.makeText(this,"clicou botao 3",Toast.LENGTH_SHORT).show()
             intent = Intent(this,Tela2::class.java)
             val bundle=Bundle()
             bundle.putInt("botao",3)
@@ -97,28 +98,37 @@ class MainActivity : AppCompatActivity() {
         val parametro:Bundle? = data?.extras
         val botao = parametro?.getInt("botao")
         parametro?.getInt("resposta")
-        when{
 
-            requestCode ==1 ->{
-                resposta_1= parametro!!.getInt("resposta1");
-                binding.texto?.resp_1=parametro.getString("usuario")!!;
-                binding.invalidateAll()
+        when(resultCode) {
+            Activity.RESULT_CANCELED -> {
+               // Toast.makeText(this, "Cancelado", Toast.LENGTH_SHORT).show()
             }
-            requestCode ==2 ->{
-                resposta_2=parametro!!.getInt("resposta2");
-                binding.texto?.resp_2=parametro.getString("usuario")!!;
-                binding.invalidateAll()
+            else -> {
+                when {
+
+                    requestCode == 1 -> {
+                        resposta_1 = parametro!!.getInt("resposta1");
+                        binding.texto?.resp_1 = parametro.getString("usuario")!!;
+                        binding.invalidateAll()
+                    }
+                    requestCode == 2 -> {
+                        resposta_2 = parametro!!.getInt("resposta2");
+                        binding.texto?.resp_2 = parametro.getString("usuario")!!;
+                        binding.invalidateAll()
+                    }
+                    requestCode == 3 -> {
+
+                        resposta_3 = parametro!!.getInt("resposta3");
+                        binding.texto?.resp_3 = parametro.getString("usuario")!!;
+                        binding.invalidateAll()
+                    }
+                    else -> {
+
+                        Toast.makeText(this, "algo deu errado no onactivity!", Toast.LENGTH_SHORT)
+                            .show()
+                    }
+                }
             }
-            requestCode ==3 ->{
-
-                resposta_3=parametro!!.getInt("resposta3");
-                binding.texto?.resp_3 =parametro.getString("usuario")!!;
-                binding.invalidateAll()
-            }else ->{
-
-            Toast.makeText(this,"algo deu errado no onactivity!",Toast.LENGTH_SHORT).show()
-        }
-
 
 
         }
