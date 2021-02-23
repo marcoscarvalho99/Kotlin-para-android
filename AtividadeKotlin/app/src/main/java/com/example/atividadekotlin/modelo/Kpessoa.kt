@@ -2,8 +2,8 @@ package com.example.atividadekotlin.modelo
 
 class Kpessoa {
 
-    var name : String
-    var altura : Float
+  lateinit  var name : String
+   lateinit var altura : String
 
 
 }
